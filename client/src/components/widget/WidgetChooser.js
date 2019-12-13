@@ -1,64 +1,86 @@
-import React from "react"
-import {Link} from "react-router-dom"
+import React from "react";
+import { Link, useParams, useHistory } from "react-router-dom";
+import uuid from "uuid";
+import axios from "axios";
 
-export default function WidgetChooser() {
+export default function WidgetChooser(props) {
+  const params = useParams();
+  const history = useHistory();
+
+  const create = async type => {
+    // Create new widget variable
+    const newWidget = {
+      _id: uuid.v4(),
+      widgetType: type,
+      pageId: params.pid
+    };
+    // Add new widget into widgets array
+    await axios.post("/api/widget", newWidget);
+    // Navigate to widget edit page
+    history.push(
+      `/user/${params.uid}/website/${params.wid}/page/${params.pid}/widget/${newWidget._id}`
+    );
+  };
+
   return (
     <div>
-  <nav className="navbar navbar-light bg-light fixed-top">
-    <div>
-      <Link 
-      to="/user/:uid/website/:wid/page/:pid/widget"
-      className ="text-dark"
-      >
-    <i className="fas fa-less-than" />
-    </Link>
-      <span className="navbar-brand h1 mb-0 ml-4">Choose Widget</span>
+      <nav className="navbar navbar-light bg-light fixed-top">
+        <div>
+          <Link
+            to={`/user/${params.uid}/website/${params.wid}/page/${params.pid}/widget`}
+            className="text-dark"
+          >
+            <i className="fas fa-less-than" />
+          </Link>
+          <span className="navbar-brand h1 mb-0 ml-4">Choose Widget</span>
+        </div>
+      </nav>
+      <main className="container">
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item">
+            <button onClick={create.bind(this, "HEADING")} className="btn">
+              Header
+            </button>
+          </li>
+          <li className="list-group-item">
+            <a href="!#">Label</a>
+          </li>
+          <li className="list-group-item">
+            <a href="!#">HTML</a>
+          </li>
+          <li className="list-group-item">
+            <a href="!#">Text Input</a>
+          </li>
+          <li className="list-group-item">
+            <a href="!#">Link</a>
+          </li>
+          <li className="list-group-item">
+            <a href="!#">Button</a>
+          </li>
+          <li className="list-group-item">
+            <button className="btn" onClick={create.bind(this, "IMAGE")}>
+              Image
+            </button>
+          </li>
+          <li className="list-group-item">
+            <button className="btn" onClick={create.bind(this, "YOUTUBE")}>
+              YouTube
+            </button>
+          </li>
+          <li className="list-group-item">
+            <a href="!#">Data Table</a>
+          </li>
+          <li className="list-group-item">
+            <a href="!#">Repeater</a>
+          </li>
+        </ul>
+      </main>
+      <footer className="navbar navbar-light bg-light fixed-bottom">
+        <span />
+        <Link to={`/user/${params.uid}`}>
+          <i className="fas fa-user" />
+        </Link>
+      </footer>
     </div>
-  </nav>
-  <main className="container">
-    <ul className="list-group list-group-flush">
-      <li className="list-group-item">
-        <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid" />Header </li>
-      
-      <li className="list-group-item">
-      <a href="!#" />Label
-      </li>
-      <li className="list-group-item">
-      <a href="!#" />HTML
-      </li>
-      <li className="list-group-item">
-      <a href="!#" />Text Input
-      </li>
-      <li className="list-group-item">
-      <a href="!#" />Link
-      </li>
-      <li className="list-group-item">
-      <a href="!#" />Button
-      </li>
-      <li className="list-group-item">
-        <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid" />
-        Image
-     </li>
-    
-      <li className="list-group-item">
-        <Link to="/user/:uid/website/:wid/page/:pid/widget/:wgid" />
-        YouTube
-      </li>
-     
-      <li className="list-group-item">
-        <a href="!#" />Data Table
-      </li>
-      <li className="list-group-item">
-        <a href="!#" />Repeater
-      </li>
-    </ul>
-    </main>
-    <footer className="navbar navbar-light bg-light fixed-bottom">
-      <span />
-      <Link to={`/user/${params.uid}`}>
-        <i className="fas fa-user" />
-      </Link>
-    </footer>
-  </div>
-);
+  );
 }
