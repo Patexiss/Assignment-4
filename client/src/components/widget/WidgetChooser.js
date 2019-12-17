@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useParams, useHistory } from "react-router-dom";
-import uuid from "uuid";
+import uuid from "uuid"; 
 import axios from "axios";
 
 export default function WidgetChooser(props) {
@@ -18,7 +18,7 @@ export default function WidgetChooser(props) {
     await axios.post("/api/widget", newWidget);
     // Navigate to widget edit page
     history.push(
-      `/user/${params.uid}/website/${params.wid}/page/${params.pid}/widget/${newWidget._id}`
+      `/user/${params.uid}/website/${params.wid}/page/${params.pid}/widget/${/*res.data._id*/newWidget._id}`
     );
   };
 

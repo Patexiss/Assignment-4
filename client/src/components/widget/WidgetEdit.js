@@ -95,3 +95,4 @@ export default function WidgetEdit(props) {
   }
   return <div></div>;
 }
+
