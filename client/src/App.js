@@ -19,11 +19,6 @@ import WidgetChooser from "./components/widget/WidgetChooser";
 import WidgetEdit from "./components/widget/WidgetEdit";
 
 function App() {
-const [pages, setPages] = useState([
-  { _id: "321", name: "Post 1", websiteId: "456", title: "Lorem" },
-  { _id: "432", name: "Post 2", websiteId: "456", title: "Lorem" },
-  { _id: "543", name: "Post 3", websiteId: "456", title: "Lorem" }
-]);
 
 const [widgets, setWidgets] = useState([
   {
@@ -63,42 +58,6 @@ const [widgets, setWidgets] = useState([
     url: "https://www.youtube.com/embed/X1JjPS40a-E"
   }
 ]);
-
-// get pages by website id
-const getPages = (wid) => {
-return pages.filter(page=>page.websiteId === wid);
-};
-
-// add new page into pages
-const addPage = newPage =>{
-setPages([...pages, newPage])
-};
-
-// get page by pid
-const getPage =pid => {
-for (let page of pages) {
-if (page._id === pid) {
-  return page;
-}
-}
-};
-
-// remove Page by pid
-const removePage =pid => {
-setPages(pages.filter(page => page._id !== pid)); 
-};
-
-//  update page
-const updatePage = newPage => {
-setPages(pages.map(page =>{
-if(page._id === newWeb._id) {
-  return newPage;
-} else {
-  return page;
-}
-})
-)
-};
 
 // Get widgets by page id
 const getWidgets = (pid) => {
@@ -150,5 +109,6 @@ const getWidgets = (pid) => {
       </Switch>
     </Router>
   );
+}
   
 export default App;
