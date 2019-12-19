@@ -4,20 +4,18 @@ import axios from "axios";
 
 export default function Login(props) {
   const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-
-let history = useHistory();
-
-async function onSubmit(e) {
-  e.preventDefault();
-  const res = await axios.get(`/api/user?username=${username}&password=${password}`);
- const user = res.data;
-  if(user) {
-    history.push(`/user/${user._id}`)
-  } else {
-    alert("Invalid Credential");
- }
-
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+  async function onSubmit(e) {
+    e.preventDefault();
+    const res = await axios.get(`/api/user?username=${username}&password=${password}`);
+    const user = res.data;
+    if(user) {
+      history.push(`/user/${user._id}`)
+    } else {
+      alert("Invalid Credential");
+    }
+  }
   return (
   <div className="container">
     <h1>Login</h1>
@@ -51,5 +49,5 @@ async function onSubmit(e) {
     </form>
   </div>
 );
-}
+
 }

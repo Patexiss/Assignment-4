@@ -22,7 +22,7 @@ export default function Profile(props) {
     };
 
     useEffect(() => {
-      getWebsites();
+      getUser();
       // eslint-disable-next-line
     }, []);
   

@@ -15,7 +15,7 @@ password: "charly", firstName: "Charly", lastName: "Garcia",
 email: "charly@ulem.com"
 },   
 {_id: "456", 
-username: "patexiss", password: "patexiss", firstName: "Patexiss", lastName: "Patexiss" 
+username: "patexiss", password: "patexiss", firstName: "Patexiss", lastName: "Patexiss", 
 email: "patexiss1@gmail.com"}
 ];
 
