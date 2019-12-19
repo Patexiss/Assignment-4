@@ -11,7 +11,7 @@ export default function Profile(props) {
 
   const params = useParams();
 
-  const getUser = async () => {
+  const getUser = async () =>{
     const res = await axios.get(`/api/user/${params.uid}`);
     const user = res.data;
     setUsername(user.username);
@@ -19,13 +19,12 @@ export default function Profile(props) {
     setFirstName(user.firstName);
     setLastName(user.lastName);
     setPassword(user.password);
-  };
+    };
 
   useEffect(() => {
     getUser();
-    //eslint-disable-next-line
-  }, []);
-
+    }, [getUser]);
+  
   const update = async () => {
     const newUser = {
       _id: params.uid,
