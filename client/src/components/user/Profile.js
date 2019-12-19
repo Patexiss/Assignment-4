@@ -21,9 +21,10 @@ export default function Profile(props) {
     setPassword(user.password);
     };
 
-  useEffect(() => {
-    getUser();
-    }, [getUser]);
+    useEffect(() => {
+      getWebsites();
+      // eslint-disable-next-line
+    }, []);
   
   const update = async () => {
     const newUser = {
