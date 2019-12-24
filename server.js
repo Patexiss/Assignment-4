@@ -4,6 +4,21 @@ const express = require("express");
 const path = require("path");
 // init express
 const app = express();
+const connectDB = require("./config/db");
+
+// Connect DB
+connectDB();
+
+// const mongoose = require("mongoose");
+// const config = require("config");
+ 
+// const db = config.get("mongo");
+ 
+// const connectDB = async () => {
+//   await mongoose.connect(db);
+// };
+ 
+// module.exports = connectDB;
 
 app.use(express.json()); 
 
