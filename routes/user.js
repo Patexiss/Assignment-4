@@ -2,25 +2,25 @@ const express = require("express");
 const router = express.Router();
 const User = require("../models/User");
 
-const users = [
-  {_id: "234", 
-  username: "bob", 
-  password: "bob", 
-  firstName: "Bob", 
-  lastName: "Marley", 
-  email: "bob@gmail.com"
-},       
-{_id: "345", 
-username: "charly", 
-password: "charly", 
-firstName: "Charly", 
-lastName: "Garcia", 
-email: "charly@ulem.com"
-},   
-{_id: "456", 
-username: "patexiss", password: "patexiss", firstName: "Patexiss", lastName: "Patexiss", 
-email: "patexiss1@gmail.com"}
-];
+// const users = [
+//   {_id: "234", 
+//   username: "bob", 
+//   password: "bob", 
+//   firstName: "Bob", 
+//   lastName: "Marley", 
+//   email: "bob@gmail.com"
+// },       
+// {_id: "345", 
+// username: "charly", 
+// password: "charly", 
+// firstName: "Charly", 
+// lastName: "Garcia", 
+// email: "charly@ulem.com"
+// },   
+// {_id: "456", 
+// username: "patexiss", password: "patexiss", firstName: "Patexiss", lastName: "Patexiss", 
+// email: "patexiss1@gmail.com"}
+// ];
 
 // Find user by credentials
 router.get("/", async (req, res) => {

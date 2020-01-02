@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const website = require("../models/Website");
 
 const websites = [
   { _id: "123", name: "Facebook", developerId: "456", description: "Lorem" },
@@ -11,56 +12,60 @@ const websites = [
   { _id: "789", name: "Chess", developerId: "234", description: "Lorem" }
  ];
 
-// Create website
+// Create new website
 router.post("/", (req,res) => {
-  const newWebsite = req.body;
-  websites.push(newWebsite);
-  res.json(newWebsite);
+  const newWebsite = new website({ ...req.body});
+  const website = await newWebsite.save();
+  // const newWebsite = req.body;
+  // websites.push(newWebsite);
+  res.json(website);
   });
 
 // Get all website by given user id
-router.get("/user/:uid", (req,res) =>{
+router.get("/user/:uid", async (req,res) =>{
   const uid = req.params.uid;
-  const currentWebsite = [];
-  for(let i=o; i<websites.length;i++) {
-    if(websites[i].developerId === uid) {
-      currentWebsites.push(websites[i]);
-    }
-  }
+  const currentWebsite = await website.find({ developerId: uid});
+  // for(let i=o; i<websites.length;i++) {
+  //   if(websites[i].developerId === uid) {
+  //     currentWebsites.push(websites[i]);
+  //   }
+  // }
   res.json(currentWebsites);
   });
 
   // Get website by given id
-  router.get("/:wid", (req, res) => {
+  router.get("/:wid", async (req, res) => {
     const wid = req.params.wid;
-    let website = null;
-    for (let i=0; i < website.length; i++) {
-    if (websites[i]._id === wid) {
-    website = websites[i];
-    }
-  }
+    const website = await Website.findById(wid);
+  //   for (let i=0; i < website.length; i++) {
+  //   if (websites[i]._id === wid) {
+  //   website = websites[i];
+  //   }
+  // }
   res.json(user);
   });
 
   // Update website
-router.put("/", (req, res) => {
+router.put("/", async (req, res) => {
   const newWebsite = req.body;
-  for(let i=0; i < website.length; i++) {
-  if(websites[i]._id === newWebsite._id) {
-    websites[i] = newWebsite;
-  }
-  }
+  await Website.findByIdAndUpdate(newWebsite._id, newWebsite);
+  // for(let i=0; i < website.length; i++) {
+  // if(websites[i]._id === newWebsite._id) {
+  //   websites[i] = newWebsite;
+  // }
+  // }
   res.json(newWebsite);
 });
 
 // Delete website
-router.delete("/:wid", (req, res) => {
+router.delete("/:wid", async (req, res) => {
   const wid = req.params.wid;
-  for(let i=0; i < website.length; i++) {
-  if(websites[i]._id === wid) {
-    websites.splice(i, 1);
-  }
-  }
+  await Website.findByIdAndRemove(wid);
+  // for(let i=0; i < website.length; i++) {
+  // if(websites[i]._id === wid) {
+  //   websites.splice(i, 1);
+  // }
+  // }
   res.json(websites);
  });
 
