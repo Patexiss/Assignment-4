@@ -33,11 +33,6 @@ router.get("/", async (req, res) => {
     user = await User.findOne({
       username: username, password: password
     })
-      // if we found a user with given username and password
-      if (users[i].username === username && users[i].password === password) {
-        user = users[i];
-      }
-    }
     // if the username is taken
   } else if(username) {
     user = await User.findOne({ username: username });
@@ -61,14 +56,14 @@ res.json(user);
 });
 
 // Find user by id
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
   const id = req.params.id;
   const user = await User.findById(id);
   res.json(user);
 });
 
 // Update user
-router.put("/", (req, res) => {
+router.put("/", async (req, res) => {
  const newUser = req.body;
  await User.findByIdAndUpdate(newUser._id, newUser)
  res.json(newUser);

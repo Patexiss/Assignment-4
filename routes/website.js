@@ -13,7 +13,7 @@ const website = require("../models/Website");
 //  ];
 
 // Create new website
-router.post("/", (req,res) => {
+router.post("/", async (req,res) => {
   const newWebsite = new website({ ...req.body});
   const website = await newWebsite.save();
   // const newWebsite = req.body;

@@ -20,6 +20,7 @@ async function connectDB() {
     useUnifiedTopology: true,
     useFindAndModify: false
   });
+}
 };
  
 module.exports = connectDB;
