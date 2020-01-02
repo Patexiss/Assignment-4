@@ -1,17 +1,40 @@
 const mongoose = require("mongoose");
+const router = express.Router();
+const Widget = require(("../models/Widget");
 
- const widgetSchema = mongoose. Schema({
-   pageId: { type: mongoose.Schema.Types.ObjectId, ref: "Page"},
-   widgetType: {
-     type: String,
-     enum: ["HEADING", "IMAGE", "YOUTUBE"],
-     require: true
-   },
-   name: {type: String},
-   text: {type: String},
-   url: {type: String},
-   width: {type: String},
-   size: {type: String},
- });
+// Create new widget
+router.post("/", async (req, res) => {
+  const newWidget = new Widget({ ...req.body });
+  const widget = await newWidget.save();
+  res.json(widget);
+});
 
- module.exports = mongoose.model("Widget")
+// Get all widgets by given page id
+router.get("/page/:pid", async (req, res) => {
+  const pid = req.params.pid;
+  const currentWidgets = await Widget.find({ pageId: pid });
+  res.json(currentWidgets);
+});
+
+// get widget by given id
+router.get("/:wgid", async (req, res) => {
+  const wgid = req.params.wgid;
+  const widget = await Widget.findById(wgid);
+  res.json(widget);
+});
+
+// Update widget
+router.put("/", async (req, res) => {
+  const newWidget = req.body;
+  await Widget.findByIdAndUpdate(newWidget._id, newWidget);
+  res.json(newWidget);
+});
+
+// Delete widget
+router.delete("/:wgid", async (req, res) => {
+  const wgid = req.params.wgid;
+  await Widget.findByIdAndRemove(wgid);
+  res.json(null);
+});
+
+  module.exports = router;

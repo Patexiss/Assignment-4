@@ -12,7 +12,7 @@ a:hover {
   text-decoration: none;
 }
 .absolute-right {
-  right: 0px;
+  right: 15px;
 }
 
 .front{
@@ -29,7 +29,7 @@ body {
 }
 ​
 form {
-  background-color:mediumorchid;
+  background-color:violet;
   padding: 20px;
   color: white;
 }
@@ -47,12 +47,12 @@ input {
 button {
   width: 100%;
   padding: 10px;
-  background-color: coral;
+  background-color: peachpuff;
   cursor: pointer;
 }
 ​
 button:hover {
-  background-color:mediumspringgreen;
+  background-color:purple;
 }  
 
 .click{
@@ -60,5 +60,5 @@ button:hover {
 }
 
 .click i:hover {
-  color: yellowgreen !important
-}
+  color: yellowgreen !important;
+} 
