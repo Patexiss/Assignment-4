@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
-import uuid from "uuid";
+// import uuid from "uuid";
 import axios from "axios";
 
 export default function PageNew(props) {
@@ -13,7 +13,7 @@ export default function PageNew(props) {
   const submit = async e => {
     e.preventDefault();
     const newPage = {
-      _id: uuid.v4(),
+      // _id: uuid.v4(),
       name: name,
       title: title,
       websiteId: params.wid

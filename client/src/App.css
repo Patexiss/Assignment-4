@@ -29,7 +29,7 @@ body {
 }
 ​
 form {
-  background-color:violet;
+  background-color:mediumorchid;
   padding: 20px;
   color: white;
 }
@@ -47,12 +47,12 @@ input {
 button {
   width: 100%;
   padding: 10px;
-  background-color: peachpuff;
+  background-color: coral;
   cursor: pointer;
 }
 ​
 button:hover {
-  background-color:purple;
+  background-color:mediumspringgreen;
 }  
 
 .click{
