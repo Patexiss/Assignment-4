@@ -5,13 +5,18 @@ import axios from "axios";
 export default function Login(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory();
+
+  let history = useHistory();
+
   async function onSubmit(e) {
     e.preventDefault();
-    const res = await axios.get(`/api/user?username=${username}&password=${password}`);
-    const user = res.data;
-    if(user) {
-      history.push(`/user/${user._id}`)
+    const formData = { username: username, password: password };
+    const res = await axios.post("/api/user/login", formData);
+
+    if (res.data) {
+      localStorage.setItem("token", res.data.token);
+      const user = res.data.user;
+      history.push(`/user/${user._id}`);
     } else {
       alert("Invalid Credential");
     }

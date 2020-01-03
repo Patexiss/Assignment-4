@@ -17,6 +17,8 @@ import PageEdit from "./components/page/PageEdit";
 import WidgetList from "./components/widget/WidgetList";
 import WidgetChooser from "./components/widget/WidgetChooser";
 import WidgetEdit from "./components/widget/WidgetEdit";
+// Routing Components
+import PrivateRoute from "./components/routing/PrivateRoute"; 
 
 function App() {
 
@@ -73,9 +75,9 @@ const getWidgets = (pid) => {
         <Route exact path="/register">
           <Register />
         </Route>
-        <Route exact path="/user/:uid">
+        <PrivateRoute exact path="/user/:uid">
           <Profile />
-        </Route>
+        </PrivateRoute>
         <Route exact path="/user/:uid/website">
           <WebsiteList />
         </Route>

@@ -1,3 +1,4 @@
 {
-  "mongo":"mongodb://localhost:27017/webmakerpsd"
+  "mongo":"mongodb://localhost:27017/webmakerpsd",
+  "jwtSecret": "secret"
 }
