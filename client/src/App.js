@@ -78,18 +78,18 @@ const getWidgets = (pid) => {
         <PrivateRoute exact path="/user/:uid">
           <Profile />
         </PrivateRoute>
-        <Route exact path="/user/:uid/website">
+        <PrivateRoute exact path="/user/:uid/website">
           <WebsiteList />
-        </Route>
+        </PrivateRoute>
         <Route exact path="/user/:uid/website/new">
           <WebsiteNew />
         </Route>
         <Route exact path="/user/:uid/website/:wid">
           <WebsiteEdit />
         </Route>
-        <Route exact path="/user/:uid/website/:wid/page">
+        <PrivateRoute exact path="/user/:uid/website/:wid/page">
           <PageList />
-        </Route>
+        </PrivateRoute>
         <Route exact path="/user/:uid/website/:wid/page/new">
           <PageNew />
         </Route>
